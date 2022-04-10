@@ -174,6 +174,7 @@ ORDER BY COUNT(last_name) DESC;
 # BONUS PART
 --------------
 As you examine the data, you begin to suspect that the dataset is fake. Maybe your boss gave you spurious data in order to test the data engineering skills of a new employee? To confirm your hunch, you decide to create a visualization of the data to present to your boss. Follow these steps:
+## FIRSTLY (create ENGINE to connect SQL server with JUPYTER notebook)  
 ````
 pip install psycopg2
 ````
@@ -182,9 +183,17 @@ from sqlalchemy import create_engine
 import psycopg2
 from config import pass_key
 ----------
-# create engine
-engine = create_engine(f'postgresql://postgres:{pass_key}@localhost:5432/hw-sql-w9-Employee')
+# create engine, and DON'T FORGET to import pass_key from config.py TO HIDE OUR PASSWORD/ USERNAME/ PORT.
+engine = create_engine(f'postgresql://{username}:{pass_key}@localhost:5432/hw-sql-w9-Employee')
 connection = engine.connect()
 ````
+## SECONDLY, we can start to clean data and create GRAPH by import matplotlib.pyplot as plt
+Import the SQL database into Pandas. (Yes, you could read the CSVs directly in Pandas, but you are, after all, trying to prove your technical mettle.)
+## THIRDLY, create a histogram to visualize the most common salary ranges for employees.
+Clean data and create histogram to overview the salary ranges of employees.
+![employee_salary_ranges](https://user-images.githubusercontent.com/99168697/162624382-265bf351-3d6d-4dd3-85e1-68a666d7c1f1.png)
 
+## FINALLY, create a bar chart of average salary by title.
+Clean data and create a bar chart of average salary by title.
+![average_salary_by_title](https://user-images.githubusercontent.com/99168697/162624388-5b53c5eb-e62d-4844-bad1-0b4bbb09b97c.png)
 
